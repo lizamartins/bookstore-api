@@ -1,5 +1,6 @@
 package com.example.bookstore.controller;
 
+import com.example.bookstore.exception.BookNotFoundException;
 import com.example.bookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -36,28 +37,18 @@ public class BookController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> getOneBook(@PathVariable(value="id") UUID id) {
 		var response = bookService.getOneBook(id);
-		if(response == null) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Book not found");
-		}
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateBook(@PathVariable(value="id") UUID id, @RequestBody @Valid BookRecordDto bookRecordDto) {
 		var response = bookService.updateBook(id, bookRecordDto);
-		if(response == null) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Book not found");
-		}
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deleteBook(@PathVariable(value="id") UUID id) {
-		var response = bookService.deleteBook(id);
-		if(response == null) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Book not found");
-		}
-		return ResponseEntity.status(HttpStatus.OK).body("Book deleted");
+		return ResponseEntity.status(HttpStatus.OK).body(bookService.deleteBook(id));
 	}
 }
 

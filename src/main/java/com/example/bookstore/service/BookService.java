@@ -2,6 +2,7 @@ package com.example.bookstore.service;
 
 import com.example.bookstore.controller.BookController;
 import com.example.bookstore.dto.BookRecordDto;
+import com.example.bookstore.exception.BookNotFoundException;
 import com.example.bookstore.model.BookModel;
 import com.example.bookstore.repository.BookRepository;
 import jakarta.validation.Valid;
@@ -13,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -47,26 +47,27 @@ public class BookService {
     public Object getOneBook(UUID id) {
         Optional<BookModel> book = bookRepository.findById(id);
         if(book.isEmpty()) {
-            return null;
+            throw new BookNotFoundException();
         }
-        return book.get();
+            return book.get();
     }
+
     public Object updateBook(UUID id, BookRecordDto bookRecordDto) {
         Optional<BookModel> book = bookRepository.findById(id);
         if(book.isEmpty()) {
-            return "Book not found";
+            throw new BookNotFoundException();
         }
         var booksModel = book.get();
         BeanUtils.copyProperties(bookRecordDto, booksModel);
         return bookRepository.save(booksModel);
     }
+
     public Object deleteBook(@PathVariable(value="id") UUID id) {
         Optional<BookModel> book = bookRepository.findById(id);
         if(book.isEmpty()) {
-            return null;
+            throw new BookNotFoundException();
         }
         bookRepository.delete(book.get());
         return "Book deleted";
     }
-
 }
