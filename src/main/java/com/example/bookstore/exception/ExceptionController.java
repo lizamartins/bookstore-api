@@ -16,4 +16,5 @@ public class ExceptionController extends ResponseEntityExceptionHandler {
     public ResponseEntity<String> handle(BookNotFoundException exception) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Book not found");
     }
+
 }

@@ -1,4 +1,4 @@
-package com.example.bookstore.model;
+package com.example.bookstore.book;
 
 import java.io.Serializable;
 import java.util.UUID;
