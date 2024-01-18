@@ -1,7 +1,10 @@
-package com.example.bookstore.auth;
+package com.example.bookstore.models;
 
+import com.example.bookstore.security.UserRole;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,17 +12,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table(name="users")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserModel implements UserDetails, Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private String id;
     private String login;
     private String password;
     private UserRole role;

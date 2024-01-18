@@ -1,4 +1,4 @@
-package com.example.bookstore.exception;
+package com.example.bookstore.exceptions;
 
 import java.io.Serializable;
 

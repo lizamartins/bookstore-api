@@ -1,5 +1,7 @@
-package com.example.bookstore.book;
+package com.example.bookstore.controllers;
 
+import com.example.bookstore.models.BookModel;
+import com.example.bookstore.services.BookService;
 import com.example.bookstore.dtos.BookRecordDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,7 +19,7 @@ import java.util.UUID;
 public class BookController {
 
 	@Autowired
-	BookService bookService;
+    BookService bookService;
 
 	@PostMapping
 	public ResponseEntity<BookModel> saveBook(@RequestBody BookRecordDto bookRecordDto) {
