@@ -1,10 +1,7 @@
-package com.example.bookstore.services;
+package com.example.bookstore.book;
 
-import com.example.bookstore.controllers.BookController;
 import com.example.bookstore.dtos.BookRecordDto;
-import com.example.bookstore.exceptions.BookNotFoundException;
-import com.example.bookstore.models.BookModel;
-import com.example.bookstore.repositories.BookRepository;
+import com.example.bookstore.exception.BookNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.example.bookstore.exceptions;
+package com.example.bookstore.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +17,6 @@ public class ExceptionController extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UserAlreadyExistsException.class)
     public ResponseEntity<String> handle(UserAlreadyExistsException exception) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body("User already exists");
-    }
-
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<String> handle(UserNotFoundException exception) {
-        return ResponseEntity.status(HttpStatus.CONFLICT).body("User not found");
     }
 
 }

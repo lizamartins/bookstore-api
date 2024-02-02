@@ -1,4 +1,4 @@
-package com.example.bookstore.security;
+package com.example.bookstore.auth;
 
 public enum UserRole {
 
