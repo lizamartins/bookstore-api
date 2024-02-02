@@ -1,6 +1,7 @@
-package com.example.bookstore.book;
+package com.example.bookstore.controller;
 
-import com.example.bookstore.dtos.BookRecordDto;
+import com.example.bookstore.exception.BookNotFoundException;
+import com.example.bookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -8,8 +9,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.example.bookstore.dto.BookRecordDto;
+import com.example.bookstore.model.BookModel;
+
 import jakarta.validation.Valid;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
